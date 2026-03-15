@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="Crazy_Tails-modified.jpg" width="320" alt="Float's mascot — Crazy Tails" />
-
 # hey, eu sou o Float 👋
 ### `Sky` · `Shato` · `FloatingSkies`
 
