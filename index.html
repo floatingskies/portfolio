@@ -4,116 +4,124 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Azzy Novais</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/98.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    :root {
-      --bg: rgba(12, 12, 12, 0.85); --white: rgba(255, 255, 255, 0.92);
-      --surface: rgba(245, 245, 245, 0.85); --text: #333;
-      --border: 2px solid #111; --shadow: 4px 4px 0 rgba(0,0,0,0.2);
-      --accent: #2dd4bf; --blue: #3b82f6; --purple: #8b5cf6;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Space Mono', monospace; background: #111; color: #111; line-height: 1.6; }
-    
-    /* Utilidades */
-    .btn {
-      font-family: 'Unbounded', sans-serif; font-size: 11px; font-weight: 700;
-      padding: 10px 20px; border: var(--border); background: var(--white);
-      color: #111; cursor: pointer; text-decoration: none; display: inline-block;
-      box-shadow: var(--shadow); transition: 0.2s; text-transform: uppercase;
-    }
-    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.3); }
-    .btn.primary { background: #111; color: #fff; }
-    .btn.primary:hover { background: var(--blue); border-color: var(--blue); }
-    .card {
-      background: var(--surface); border: var(--border); box-shadow: var(--shadow);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    /* ===== Ajustes Windows 98 ===== */
+    body {
+      background: #008080; /* área de trabalho clássica */
+      font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+      padding: 20px;
     }
 
-    /* Header */
-    .top-bar {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);
-      border-bottom: var(--border); display: flex; justify-content: space-between;
-      align-items: center; padding: 15px 40px;
+    h1, h2, h3 { margin: 0; }
+
+    /* Janela principal centralizada */
+    .window.main {
+      max-width: 1100px;
+      margin: 0 auto;
     }
-    .logo { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 20px; text-decoration: none; color: #111; }
-    .nav-links a { margin-left: 20px; text-decoration: none; color: #111; font-weight: 700; font-size: 12px; text-transform: uppercase; }
-    .lang-btn { background: none; border: none; cursor: pointer; font-weight: 700; margin-left: 10px; opacity: 0.5; }
-    .lang-btn.active { opacity: 1; color: var(--blue); }
+
+    /* Barra de menu topo */
+    .menu-bar { padding: 2px 4px; }
+    .menu-bar button {
+      background: none; border: none; cursor: pointer;
+      font-family: inherit; font-size: 11px; padding: 2px 8px;
+    }
+    .menu-bar button:hover { background: #000080; color: #fff; }
+    .menu-bar .lang-btn { opacity: 0.6; }
+    .menu-bar .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
 
     /* Hero */
     .hero {
-      min-height: 100vh; position: relative; display: flex; align-items: center;
-      background: url('./img/char.jpg') no-repeat center top / cover fixed;
+      background: url('./img/char.png') no-repeat center top / cover;
+      min-height: 320px; display: flex; align-items: flex-end;
+      padding: 20px; margin: 8px;
+      border: inset 2px;
     }
-    .hero::before {
-      content: ''; position: absolute; inset: 0; 
-      background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.95));
-      pointer-events: none;
+    .hero-box {
+      background: rgba(192, 192, 192, 0.92);
+      border: outset 2px; padding: 12px 16px; max-width: 640px;
     }
-    .hero-content { position: relative; z-index: 2; padding: 100px 50px; max-width: 700px; }
-    .hero-title { font-family: 'Unbounded', sans-serif; font-size: clamp(2rem, 8vw, 5rem); line-height: 1; margin-bottom: 20px; }
-    .box { display: inline-block; padding: 0 10px; background: var(--white); border: var(--border); box-shadow: var(--shadow); margin-bottom: 5px; }
-    .hero-desc { font-size: 14px; margin: 20px 0 30px; padding-left: 15px; border-left: 4px solid #111; background: rgba(255,255,255,0.7); }
+    .hero-title { font-size: 32px; margin-bottom: 8px; }
+    .hero-desc { font-size: 12px; margin: 8px 0 12px; }
 
-    /* Seções */
-    section { padding: 60px 40px; border-bottom: var(--border); background: rgba(255,255,255,0.9); }
-    .section-title { font-family: 'Unbounded', sans-serif; font-size: 24px; margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
-    .section-title span { background: #111; color: #fff; padding: 2px 8px; font-size: 14px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    section.win-section { margin: 8px; }
+    .section-title {
+      background: linear-gradient(90deg, #000080, #1084d0);
+      color: #fff; padding: 3px 8px; font-size: 12px; font-weight: bold;
+      display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+    }
 
-    /* Sobre & Terminal */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+
+    /* Terminal estilo cmd */
     .terminal {
-      background: rgba(0,0,0,0.85); color: #0f0; padding: 20px;
-      border: var(--border; border-radius: 2px; font-size: 13px;
-      box-shadow: var(--shadow); overflow-x: auto;
+      background: #000; color: #aaaaaa; font-family: "Courier New", monospace;
+      font-size: 12px; padding: 12px; border: inset 2px; overflow-x: auto; white-space: nowrap;
     }
     .k { color: #ff79c6; } .s { color: #50fa7b; } .c { color: #6272a4; font-style: italic; }
 
     /* Projetos */
-    .projects-scroll { display: flex; overflow-x: auto; padding-bottom: 20px; gap: 20px; }
-    .project-card { min-width: 280px; flex: 1; display: flex; flex-direction: column; }
-    .project-body { padding: 15px; flex-grow: 1; font-size: 12px; }
-    .project-footer { padding: 10px 15px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; justify-content: space-between; }
+    .projects-scroll { display: flex; overflow-x: auto; padding: 4px; gap: 12px; }
+    .project-card { min-width: 300px; max-width: 320px; display: flex; flex-direction: column; background: #c0c0c0; border: outset 2px; }
+    .project-card .title-bar { margin: 4px; }
+    .project-body { padding: 8px 12px; flex-grow: 1; font-size: 11px; }
+    .project-meta { font-size: 10px; color: #333; margin-top: 6px; }
+    .topic {
+      display: inline-block; background: #dfdfdf; border: inset 1px;
+      font-size: 10px; padding: 0 4px; margin: 1px;
+    }
+    .project-footer {
+      padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid #808080;
+    }
 
     /* Formulário */
-    input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: var(--border); background: rgba(255,255,255,0.9); font-family: monospace; }
-    
-    /* Responsividade */
+    input, textarea { width: 100%; margin-bottom: 8px; }
+    form { display: flex; flex-direction: column; }
+
+    .status-bar .field, .field-row { font-size: 11px; }
+
     @media (max-width: 768px) {
-      .top-bar { padding: 10px 20px; } .nav-links a { display: none; }
-      .hero-content, section { padding: 20px; }
+      body { padding: 8px; }
+      .nav-links a { display: none; }
+      .hero-content { padding: 10px; }
     }
   </style>
 </head>
 <body>
 
-<div class="top-bar">
-  <a href="#" class="logo">&lt;Float /&gt;</a>
-  <div>
-    <a href="#about">Sobre</a><a href="#projects">Projetos</a>
+<div class="window main">
+  <div class="title-bar">
+    <div class="title-bar-text"><i class="fa-brands fa-github"></i> Float98 — Portfólio</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div class="menu-bar">
+    <button onclick="location.hash='#about'">Sobre</button>
+    <button onclick="location.hash='#projects'">Projetos</button>
+    <button onclick="location.hash='#contact'">Contato</button>
     <button class="lang-btn active" onclick="setLang('pt')">PT</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
   </div>
-</div>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">
-      <span class="box">FLOAT</span><br>
-      <span class="box">SKY</span>
-    </h1>
-    <p class="hero-desc" data-pt="Mexendo em máquinas desde que monitores eram de tubo. Crianças aprendem a falar com 1 ano — aos 3 eu já brigava com o SO. Faço interfaces que até sua avó entenderia." data-en="Messing with machines since monitors were CRTs. Kids learn to talk at age 1 — at 3 I was fighting the OS. I build interfaces even your grandma would understand."></p>
-    <a href="#projects" class="btn primary">Ver Projetos</a>
-  </div>
-</section>
+  <section class="hero">
+    <div class="hero-box">
+      <h1 class="hero-title">FLOAT / SKY</h1>
+      <p class="hero-desc" data-pt="Mexendo em máquinas desde que monitores eram de tubo. Crianças aprendem a falar com 1 ano — aos 3 eu já brigava com o SO. Faço interfaces que até sua avó entenderia." data-en="Messing with machines since monitors were CRTs. Kids learn to talk at age 1 — at 3 I was fighting the OS. I build interfaces even your grandma would understand."></p>
+      <a href="#projects" class="btn-like"><button>Ver Projetos</button></a>
+    </div>
+  </section>
 
-<section id="about">
-  <div class="section-title"><span>01</span> Sobre</div>
-  <div class="grid">
-    <div class="terminal">
+  <section id="about" class="win-section">
+    <div class="section-title"><span>01</span> Sobre</div>
+    <div class="grid">
+      <div class="terminal">
 <span class="k">const</span> float = {<br>
 &nbsp;&nbsp;name: <span class="s">"Sky / Float"</span>,<br>
 &nbsp;&nbsp;role: <span class="s">"Full-Stack"</span>,<br>
@@ -121,38 +129,43 @@
 &nbsp;&nbsp;location: <span class="s">"Brazil"</span><br>
 };<br>
 <span class="c">// Se nao tiver comentario engraçado, nao compila</span>
+      </div>
+      <div class="window" style="padding:12px;">
+        <h3 style="margin-bottom:8px;">Stats</h3>
+        <p><strong>Local:</strong> Brasil</p>
+        <p><strong>Foco:</strong> Front-End & UI</p>
+        <p><strong>Game Type:</strong> Casual e Sandbox</p>
+        <a href="https://github.com/floatingskies" target="_blank"><button style="margin-top:10px;">GitHub</button></a>
+      </div>
     </div>
-    <div class="card" style="padding: 20px;">
-      <h3 style="margin-bottom: 10px;">Stats</h3>
-      <p><strong>Local:</strong> Brasil</p>
-      <p><strong>Foco:</strong> Front-End & UI</p>
-      <p><strong>Game Type:</strong>Casual e Sandbox</p>
-      <a href="https://github.com/azzynovais" target="_blank" class="btn" style="margin-top:10px;">GitHub</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="projects">
-  <div class="section-title"><span>02</span> Projetos</div>
-  <div class="projects-scroll" id="github-projects">
-    <div style="padding:20px; opacity:0.5">Carregando projetos...</div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-title"><span>03</span> Contato</div>
-  <div class="grid">
-    <div class="card" style="padding: 20px;">
-      <p>Aberto para freelas e collabs. Me chama!</p>
+  <section id="projects" class="win-section">
+    <div class="section-title"><span>02</span> Projetos</div>
+    <div class="projects-scroll" id="github-projects">
+      <div style="padding:12px; opacity:0.6">Carregando projetos...</div>
     </div>
-    <form onsubmit="alert('Mensagem enviada! (Simulação)'); return false;">
-      <input type="text" placeholder="Nome" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Mensagem" rows="3" required></textarea>
-      <button type="submit" class="btn primary">Enviar</button>
-    </form>
+  </section>
+
+  <section id="contact" class="win-section">
+    <div class="section-title"><span>03</span> Contato</div>
+    <div class="grid">
+      <div class="window" style="padding:12px;">
+        <p>Aberto para freelas e collabs. Me chama!</p>
+      </div>
+      <form onsubmit="alert('Mensagem enviada! (Simulação)'); return false;">
+        <input type="text" placeholder="Nome" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Mensagem" rows="3" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="status-bar">
+    <p class="field">Pronto</p>
   </div>
-</section>
+</div>
 
 <script>
   // 1. Troca de Idioma Simples
@@ -160,40 +173,49 @@
   const translatable = document.querySelectorAll('[data-pt]');
 
   function setLang(lang) {
-    // Atualiza botões
     langBtns.forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
-    // Atualiza textos
     translatable.forEach(el => {
       el.textContent = el.getAttribute(`data-${lang}`);
     });
-    // Atualiza título da seção (hardcoded para simplificar)
     document.querySelectorAll('.section-title').forEach((t, i) => {
       const titles = { pt: ['Sobre', 'Projetos', 'Contato'], en: ['About', 'Projects', 'Contact'] };
       if(titles[lang][i]) t.innerHTML = `<span>0${i+1}</span> ${titles[lang][i]}`;
     });
   }
 
-  // 2. GitHub API Simplificada
+  // 2. GitHub API — perfil floatingskies com todos os detalhes
   async function fetchProjects() {
     const container = document.getElementById('github-projects');
     try {
-      const res = await fetch('https://api.github.com/users/azzynovais/repos?sort=updated&per_page=6');
+      const res = await fetch('https://api.github.com/users/floatingskies/repos?sort=updated&per_page=12');
       const repos = await res.json();
-      
+
       container.innerHTML = repos.map(repo => `
-        <div class="card project-card">
-          <div style="padding:15px; border-bottom:1px solid rgba(0,0,0,0.1)">
-            <h3 style="font-size:14px; text-transform:uppercase; margin-bottom:5px">${repo.name}</h3>
-            <span style="font-size:10px; opacity:0.7">${repo.language || 'Code'}</span>
+        <div class="project-card window">
+          <div class="title-bar">
+            <div class="title-bar-text">${repo.name}</div>
+            <div class="title-bar-controls">
+              <button aria-label="Close" style="pointer-events:none;"></button>
+            </div>
           </div>
-          <div class="project-body">${repo.description || 'Sem descrição.'}</div>
+          <div class="project-body">
+            <p><strong>Descrição:</strong> ${repo.description || 'Sem descrição.'}</p>
+            <p class="project-meta">
+              <strong>Linguagem:</strong> ${repo.language || 'N/A'}<br>
+              <strong>★ Stars:</strong> ${repo.stargazers_count} &nbsp; <strong>Forks:</strong> ${repo.forks_count} &nbsp; <strong>Issues:</strong> ${repo.open_issues_count}<br>
+              <strong>Licença:</strong> ${repo.license ? repo.license.spdx_id : 'Nenhuma'}<br>
+              <strong>Criado:</strong> ${new Date(repo.created_at).toLocaleDateString('pt-BR')} &nbsp; <strong>Atualizado:</strong> ${new Date(repo.updated_at).toLocaleDateString('pt-BR')}
+            </p>
+            <div>${(repo.topics || []).map(t => `<span class="topic">${t}</span>`).join('')}</div>
+          </div>
           <div class="project-footer">
-            <a href="${repo.html_url}" target="_blank" class="btn" style="font-size:9px; padding:5px 10px">Ver Código</a>
+            <a href="${repo.html_url}" target="_blank"><button style="font-size:10px;">Ver Código</button></a>
+            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank"><button style="font-size:10px;">Site</button></a>` : ''}
           </div>
         </div>
       `).join('');
     } catch (e) {
-      container.innerHTML = '<div style="padding:20px; color:red">Erro ao carregar GitHub.</div>';
+      container.innerHTML = '<div style="padding:12px; color:red">Erro ao carregar GitHub.</div>';
     }
   }
 
